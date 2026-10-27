@@ -1,0 +1,246 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #5a2a2a;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- SLIDER WRAPPER --- */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+/* --- SLIDER (Area Geser) --- */
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.slider::-webkit-scrollbar { display: none; }
+
+/* --- SLIDE ITEM --- */
+.slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* --- CARD DASAR --- */
+.card {
+    width: 90%;
+    max-width: 380px;
+    height: 85vh;
+    max-height: 700px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    
+    /* Animasi fade */
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: all 0.8s ease-out;
+}
+
+.slide.active .card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Warna Card */
+.card-maroon {
+    background: #6b1d2c;
+    background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
+    background-blend-mode: overlay;
+    color: #fdfbf7;
+}
+
+.card-light {
+    background: #fdfbf7;
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    color: #4a4a4a;
+    border: 1px solid #e0dcd3;
+}
+
+/* --- KARTU 1 --- */
+.card-1 {
+    background: linear-gradient(rgba(107, 29, 44, 0.85), rgba(107, 29, 44, 0.85)), url('https://placehold.co/600x900/6b1d2c/white?text=Your+Photo+Here');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+.card-1 h2 { font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 10px; font-weight: 400;}
+.card-1 h4 { font-weight: 300; font-size: 1rem; line-height: 1.6; opacity: 0.9; }
+.small-text { font-size: 0.75rem; margin-top: 30px; opacity: 0.8; }
+
+/* --- KARTU 2 --- */
+.card-2 { text-align: center; }
+.title-script { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: #fdfbf7; margin-bottom: 25px; }
+.photos-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.polaroid { background: white; padding: 6px 6px 20px 6px; transform: rotate(-6deg); box-shadow: 3px 3px 8px rgba(0,0,0,0.3); }
+.polaroid:nth-child(even) { transform: rotate(6deg); }
+.polaroid img { width: 70px; height: 70px; object-fit: cover; }
+
+/* --- KARTU 3 --- */
+.card-3 { text-align: center; }
+.card-3 h3 { font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 30px; font-size: 1.4rem; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+.reason-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px 10px; width: 100%; }
+.reason-item { display: flex; flex-direction: column; align-items: center; }
+.reason-item img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; margin-bottom: 8px; border: 2px solid #ddd; }
+.reason-item p { font-size: 0.7rem; color: #666; font-weight: 600; }
+
+/* --- KARTU 4 --- */
+.card-4 { text-align: center; }
+.record-container {
+    width: 150px; height: 150px; background: #111; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 20px auto 0; position: relative; animation: spin 4s linear infinite;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+.record-container::after { content: ''; width: 50px; height: 50px; background: #d4a5a5; border-radius: 50%; position: absolute; }
+.record-container::before { content: ''; width: 12px; height: 12px; background: #fff; border-radius: 50%; position: absolute; z-index: 2; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* --- KARTU 5 --- */
+.card-5 { text-align: center; }
+.card-5 h3 { font-size: 1rem; margin-bottom: 25px; font-weight: 400; line-height: 1.5;}
+.three-words { display: flex; gap: 15px; justify-content: center; width: 100%;}
+.word-item { text-align: center; background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; flex: 1;}
+.word-item img { width: 60px; height: 60px; object-fit: cover; margin-bottom: 8px; border-radius: 5px;}
+.word-item p { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;}
+
+/* --- KARTU 6 --- */
+.card-6 { text-align: center; justify-content: flex-start; padding-top: 50px;}
+.card-6 h3 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; margin-bottom: 20px; font-weight: 400;}
+.letter-text { font-size: 0.85rem; line-height: 1.8; text-align: justify; opacity: 0.9; }
+
+/* --- KARTU 7 --- */
+.card-7 { text-align: center; }
+.card-7 h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.4;}
+.little-things { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.photo-stack img { width: 100px; height: 100px; object-fit: cover; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: rotate(-3deg); }
+.note-paper {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.1);
+    transform: rotate(2deg);
+    width: 90%;
+    text-align: left;
+    border-left: 5px solid #7a1e2e;
+}
+.note-paper span { font-family: 'Great Vibes', cursive; font-size: 1.5rem; color: #7a1e2e; display: block; margin-bottom: 10px;}
+.note-paper ul { padding-left: 15px; font-size: 0.75rem; line-height: 1.8; color: #555;}
+
+/* --- KARTU 8 --- */
+.card-8 { text-align: center; justify-content: space-between; padding: 40px 25px;}
+.small-header { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;}
+.desc-text { font-size: 0.8rem; line-height: 1.7; margin-bottom: 15px; color: #666; }
+.bottom-photos { display: flex; gap: 10px; justify-content: center; margin-top: auto;}
+.bottom-photos img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 3px 10px rgba(0,0,0,0.1);}
+
+/* --- TOMBOL NAVIGASI --- */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.7);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    color: #7a1e2e;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.nav-btn:active { background: white; transform: translateY(-50%) scale(0.9); }
+.prev { left: 5px; }
+.next { right: 5px; }
+
+/* --- DOTS --- */
+.dots-container {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    z-index: 20;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #d4a5a5;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+.dot.active { background: #7a1e2e; width: 18px; border-radius: 5px; }
+
+/* --- MUSIC BUTTON --- */
+.music-player {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.music-player svg { width: 20px; height: 20px; fill: #7a1e2e; }
+.playing svg { animation: pulse 1s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+/* --- FLOATING HEARTS --- */
+.heart {
+    position: fixed;
+    top: -10vh;
+    font-size: 20px;
+    color: #ff6b81;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear forwards;
+}
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
